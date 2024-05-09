@@ -282,6 +282,8 @@ void Feeder::feederGoUp()
         logger.log(LL_NOTICE, "feeder goUp");
     #endif
 
+    RB = m_controller.GetRightBumper();
+
     if (RB)
     {
         setState(GoDown);
