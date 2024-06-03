@@ -1,3 +1,5 @@
+// propulseur speed 87
+// max drive speed 25
 
 // possition du m_controller sur driver station
 #define CONTROLLER_PORT_NO 0
@@ -17,7 +19,7 @@
 
 //DRIVE---------------------------------------------------------
 
-#define MAX_SPEED_TELEOP_INIT 0.43
+#define MAX_SPEED_TELEOP_INIT 0.7
 
 //Can id des moteur du drivetrain
 #define LEFT_LEAD_MOTOR_ID 10
@@ -84,7 +86,7 @@
 
 #define RELAY_PIN_DIO 5
 
-#define LANCER_SPEED 0.3
+#define LANCER_SPEED 1
 
 //FEEDER---------------------------------------------------------
 

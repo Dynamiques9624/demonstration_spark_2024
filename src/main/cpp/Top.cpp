@@ -20,7 +20,9 @@ void Top:: handleTopInit(){
     motor_bascul_right.RestoreFactoryDefaults();
 
     bascul_value = POS_BASE_VALUE_BASCUL;
-    
+
+    lancer_speed_value = 0.7;
+   
     set_predefine_loaded = false;
     nb_shoot_amp = 0;
 
@@ -177,13 +179,34 @@ void Top::basculHandler(){
 
 void Top::handlelancerSpeed(){
 
+    pov = m_controller.GetPOV();
+
+    if (pov == 90 && lancer_speed_value != 1){
+
+        lancer_speed_value += 0.01;
     
+    }
+    if (pov == 270 && lancer_speed_value != 0){
+
+        lancer_speed_value -= 0.01;
+    
+    }
+
+    if (lancer_speed_value <= 0){
+        lancer_speed_value = 0;
+            
+    }else if (lancer_speed_value >= 1){
+        lancer_speed_value = 1;
+    }
+
+    std::cout <<"lanceur speed " << lancer_speed_value << "\n";
+
     if(feeder_state == FeederState::GoUp || feeder_state == FeederState::Loaded || feeder_state == FeederState::Fire){
         
         if (amp_state == AmpState::Idle){
 
-            motor_lancer_an_right.Set(-LANCER_SPEED);  
-            motor_lancer_an_left.Set(LANCER_SPEED); 
+            motor_lancer_an_right.Set(-lancer_speed_value);  
+            motor_lancer_an_left.Set(lancer_speed_value); 
             
         }else{
             motor_lancer_an_right.Set(0); 

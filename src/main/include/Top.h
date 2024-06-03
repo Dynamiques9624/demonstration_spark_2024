@@ -84,6 +84,7 @@ class Top : protected Feeder{
     double RT;
     double LT;
     int pov;
+    float lancer_speed_value;
 
     int pov_second;
     
